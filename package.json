@@ -1,0 +1,21 @@
+{
+  "name": "speech-to-fhir-demo",
+  "version": "1.0.0",
+  "description": "Implementation example of Speech-to-FHIR using the Squire SDK",
+  "scripts": {
+    "dev": "http-server"
+  },
+  "keywords": [
+    "speech-to-fhir",
+    "js",
+    "web",
+    "healthcare",
+    "squire"
+  ],
+  "author": "Squire Health (https://squire.eu/)",
+  "license": "ISC",
+  "dependencies": {
+    "@squirehealth/sdk": "^1.6.2",
+    "http-server": "^14.1.1"
+  }
+}

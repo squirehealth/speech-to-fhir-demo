@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Speech-to-FHIR Demo with Squire SDK</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demo application for Speech-to-FHIR using Squire SDK"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+
+    <!-- LForms CSS -->
+    <link
+      href="https://lhcforms-static.nlm.nih.gov/lforms-versions/36.8.0/webcomponent/styles.css"
+      media="screen"
+      rel="stylesheet"
+    />
+
+    <!-- Import Squire SDK -->
+    <script src="./node_modules/@squirehealth/sdk/dist/index.umd.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="assets/logo.svg" alt="Squire Logo" class="logo" />
+        <h1>Speech-to-FHIR Demo</h1>
+      </header>
+
+      <div id="app">
+        <p>
+          This demo shows how to render a FHIR Questionnaire using the LHNCBC
+          LForms library and integrate it with the Squire SDK for speech
+          recognition.
+        </p>
+
+        <div class="controls">
+          <button
+            id="startRecording"
+            onclick="startRecording()"
+            class="btn-primary"
+          >
+            Start Recording
+          </button>
+          <button
+            id="stopRecording"
+            onclick="stopRecording()"
+            class="btn-secondary"
+          >
+            Stop Recording
+          </button>
+        </div>
+      </div>
+
+      <div id="form-container"></div>
+    </div>
+
+    <!-- LForms JavaScript dependencies -->
+    <script src="https://lhcforms-static.nlm.nih.gov/lforms-versions/36.8.0/webcomponent/assets/lib/zone.min.js"></script>
+    <script src="https://lhcforms-static.nlm.nih.gov/lforms-versions/36.8.0/webcomponent/lhc-forms.js"></script>
+    <script src="https://lhcforms-static.nlm.nih.gov/lforms-versions/36.8.0/fhir/R4/lformsFHIR.min.js"></script>
+
+    <script>
+      var fhirQuestionnaire = null;
+
+      // Function to fetch the FHIR Questionnaire
+      async function fetchQuestionnaire() {
+        try {
+          const response = await fetch("./assets/f201-lifelines.json");
+          fhirQuestionnaire = await response.json();
+          console.log("Questionnaire loaded successfully");
+
+          // Initialize the form after questionnaire is loaded
+          var formContainer = document.getElementById("form-container");
+          LForms.Util.addFormToPage(fhirQuestionnaire, formContainer);
+        } catch (error) {
+          console.error("Error fetching questionnaire:", error);
+        }
+      }
+
+      // init Squire client
+      const squire = new Squire({
+        token: "<YOUR_TOKEN>",
+        apiUrl: "https://api-acc.squire.eu",
+        outputLanguage: "en",
+      });
+
+      squire.on("summary-ready", (summary) => {
+        console.log(summary);
+
+        if (summary.data && summary.generation_result === "success") {
+          var formContainer = document.getElementById("form-container");
+          LForms.Util.mergeFHIRDataIntoLForms(fhirQuestionnaire, summary.data);
+        } else {
+          console.error("Error in summary data:", summary);
+        }
+      });
+
+      function startRecording() {
+        squire.startRecording({
+          templateId: "test_custom_template_fhir",
+          inputLanguage: "en",
+        });
+        console.log("Recording started");
+      }
+
+      function stopRecording() {
+        squire.stopRecording();
+        console.log("Recording stopped");
+      }
+
+      // Initialize the form when the page loads
+      window.addEventListener("load", function () {
+        fetchQuestionnaire();
+      });
+    </script>
+  </body>
+</html>
