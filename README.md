@@ -60,11 +60,12 @@ To render them locally in this demo, add them to the `assets` folder and request
 
 ## Useful Links
 
-- [Squire SDK Documentation](https://developers.squire.eu/)
-- [Squire API Documentation](https://acc.squire.eu/api/v1/external/schema/redoc/)
-- [Squire Portal](https://acc.squire.eu/)
-- [FHIR Questionnaires](https://www.hl7.org/fhir/questionnaire.html)
-- [LForms](https://github.com/LHNCBC/lforms)
+- [Squire SDK Documentation](https://developers.squire.eu/): Guide on how to use the Squire SDK
+- [Squire API Documentation](https://acc.squire.eu/api/v1/external/schema/redoc/): API reference for Squire's backend services
+- [Squire Portal](https://acc.squire.eu/): Manage your account, API keys, and FHIR Questionnaires
+- [FHIR Questionnaire Explorer](https://fhir-explorer.squire.eu/): Explore and test FHIR Questionnaires
+- [FHIR Questionnaires](https://www.hl7.org/fhir/questionnaire.html): Official FHIR documentation on Questionnaires
+- [LForms](https://github.com/LHNCBC/lforms): Library for rendering FHIR Questionnaires used in this demo
 
 ## About
 
