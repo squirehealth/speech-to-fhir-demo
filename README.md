@@ -1,6 +1,6 @@
 # Speech-to-FHIR Demo
 
-This repository contains a simple demo application that showcases how to convert speech input into FHIR resources using the Squire SDK.
+This demo integrates the Squire Speech-to-FHIR SDK and renders the FHIR output with the open source LHNCBC LForms library.
 
 <div align="center">
   <img src="./assets/preview.png" alt="Preview" style="max-width: 700px;">
