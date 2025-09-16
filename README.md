@@ -52,11 +52,19 @@ Once you have the access token, add it to `index.html` to authenticate your requ
 > [!NOTE]
 > In a real life application, you would request the access token per end user on your backend server. For simplicity reasons, we are hardcoding it in this demo.
 
-## Custom FHIRQuestionnaires
+## Building your own FHIR Questionnaires
 
 Any custom FHIRQuestionnaire can be used. To do so, first add them to Squire via the API. This will generate a `templateId` that you can use to reference the questionnaire in the SDK.
 
 To render them locally in this demo, add them to the `assets` folder and request them in the `index.html` file.
+
+## Useful Links
+
+- [Squire SDK Documentation](https://developers.squire.eu/)
+- [Squire API Documentation](https://acc.squire.eu/api/v1/external/schema/redoc/)
+- [Squire Portal](https://acc.squire.eu/)
+- [FHIR Questionnaires](https://www.hl7.org/fhir/questionnaire.html)
+- [LForms](https://github.com/LHNCBC/lforms)
 
 ## About
 
