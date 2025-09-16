@@ -2,6 +2,10 @@
 
 This repository contains a simple demo application that showcases how to convert speech input into FHIR resources using the Squire SDK.
 
+<div align="center">
+  <img src="./assets/preview.png" alt="Preview" style="max-width: 700px;">
+</div>
+
 ## Getting Started
 
 ### 1. Clone the repository and install dependencies
