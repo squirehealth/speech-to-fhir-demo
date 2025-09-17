@@ -52,11 +52,32 @@ Once you have the access token, add it to `index.html` to authenticate your requ
 > [!NOTE]
 > In a real life application, you would request the access token per end user on your backend server. For simplicity reasons, we are hardcoding it in this demo.
 
-## Building your own FHIR Questionnaires
+## Next steps
+
+We recommend first testing the included FHIR Questionnaire example. Once you are able to fill in the form with voice, we suggest the following tasks:
+
+## 1. Creating a custom FHIRQuestionnaire structure
+
+- Define the questionnaire JSON
+- Add it to your organization via the Squire API (https://acc.squire.eu/api/v1/external/schema/redoc/#tag/templates/operation/templates_create)
+- Render it locally in this web application using LForms and complete it
 
 Any custom FHIRQuestionnaire can be used. To do so, first add them to Squire via the API. This will generate a `templateId` that you can use to reference the questionnaire in the SDK.
 
 To render them locally in this demo, add them to the `assets` folder and request them in the `index.html` file.
+
+### 2. Implement more SDK functionality
+
+- Microphone selection (https://developers.squire.eu/integration/sdk/usage#get-microphones)
+- pause/resume functionality (https://developers.squire.eu/integration/sdk/usage#pausing-and-resuming-a-consultation)
+- "auto" language to recognise any language automatically (https://developers.squire.eu/languages)
+
+
+### 3. Integrate the demo into your own web application
+
+For the abmitious developers: a demo is cool, but can you integrate it in your own application?
+
+The Squire SDK is developped to be integratable into any system. Via FHIR Questionnaires you can define the forms unique to your software.
 
 ## Useful Links
 
