@@ -79,6 +79,34 @@ For the abmitious developers: a demo is cool, but can you integrate it in your o
 
 The Squire SDK is developped to be integratable into any system. Via FHIR Questionnaires you can define the forms unique to your software.
 
+
+## Testing with Virtual Audio Input
+
+If you want to test the recording feature without speaking every time, you can use a virtual audio input to play a test audio file as your microphone input. This is useful for demoing or automating tests.
+
+### macOS: Blackhole + GarageBand
+
+1. **Install [Blackhole](https://existential.audio/blackhole/)** (free virtual audio driver).
+2. **Install GarageBand** from the Mac App Store (or use any DAW that can route audio output to Blackhole).
+3. Set up Blackhole as an aggregate device in Audio MIDI Setup, and select it as your system input.
+4. Open GarageBand, import the test audio file (`assets/test_audio.wav`), and set the output device to Blackhole.
+5. Start playback in GarageBand. Your browser/app will receive the audio as if it was coming from your microphone.
+
+### Windows: VoiceMeeter + Audacity (or alternative DAW)
+
+1. **Install [VoiceMeeter](https://vb-audio.com/Voicemeeter/)** (virtual audio mixer).
+2. **Install [Audacity](https://www.audacityteam.org/)** (free audio editor) or use any DAW that can route audio output to VoiceMeeter.
+3. Set VoiceMeeter Input as your default recording device in Windows Sound settings.
+4. Open Audacity, import the test audio file (`assets/test_audio.wav`), and set the output device to VoiceMeeter.
+5. Play the audio in Audacity. Your browser/app will receive the audio as microphone input.
+
+> **Note:** You can use any DAW or audio player that allows you to select the output device. Alternatives to GarageBand on Windows include FL Studio, Reaper, or even the built-in Windows Media Player (with proper routing).
+
+### Test Audio File
+
+The repository includes a sample audio file at `assets/test_audio.wav` for testing purposes.
+
+---
 ## Useful Links
 
 - [Squire SDK Documentation](https://developers.squire.eu/): Guide on how to use the Squire SDK
