@@ -52,7 +52,7 @@ Once you have the access token, add it to `index.html` to authenticate your requ
 > [!NOTE]
 > In a real life application, you would request the access token per end user on your backend server. For simplicity reasons, we are hardcoding it in this demo.
 
-## Next steps
+## FHIR-A-THON 2025 - Next steps
 
 We recommend first testing the included FHIR Questionnaire example. Once you are able to fill in the form with voice, we suggest the following tasks:
 
