@@ -67,6 +67,43 @@ p {
   background-color: hsl(var(--muted));
   border-radius: var(--radius);
   border: 1px solid hsl(var(--border));
+  align-items: center;
+}
+
+.mic-selector {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  min-width: 160px;
+  height: 2.5rem;
+  transition: border-color 0.2s ease-in-out;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='none' stroke='%23666' stroke-width='2' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25em 1.25em;
+  cursor: pointer;
+}
+
+/* Show native dropdown arrow on macOS for accessibility */
+@media not all and (min-resolution:.001dpcm) { @supports (-webkit-appearance: none) {
+  .mic-selector {
+    background-image: none;
+    padding-right: 0.75rem;
+    appearance: menulist;
+    -webkit-appearance: menulist;
+  }
+}}
+
+.mic-selector:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
 }
 
 button {

@@ -36,6 +36,7 @@
         </p>
 
         <div class="controls">
+          <select id="micSelector" class="mic-selector" style="margin-right: 1em; min-width: 160px;"></select>
           <button
             id="startRecording"
             onclick="startRecording()"
@@ -79,12 +80,37 @@
         }
       }
 
+
       // init Squire client
       const squire = new Squire({
         token: "<YOUR_TOKEN>",
         apiUrl: "https://api-acc.squire.eu",
         outputLanguage: "en",
       });
+
+      let audioInputs = [];
+      let selectedMic = null;
+
+      async function populateMicSelector() {
+        try {
+          audioInputs = await squire.getAudioInputs();
+          const micSelector = document.getElementById("micSelector");
+          micSelector.innerHTML = "";
+          audioInputs.forEach((mic, idx) => {
+            const option = document.createElement("option");
+            option.value = mic.deviceId;
+            option.textContent = mic.label || `Microphone ${idx + 1}`;
+            if (mic.isDefault) option.selected = true;
+            micSelector.appendChild(option);
+          });
+          selectedMic = audioInputs.find(m => m.isDefault) || audioInputs[0];
+          micSelector.addEventListener("change", function (e) {
+            selectedMic = audioInputs.find(m => m.deviceId === e.target.value);
+          });
+        } catch (err) {
+          console.error("Could not get microphones", err);
+        }
+      }
 
       squire.on("summary-ready", (summary) => {
         console.log(summary);
@@ -101,8 +127,9 @@
         squire.startRecording({
           templateId: "test_custom_template_fhir",
           inputLanguage: "en",
+          audioInput: selectedMic
         });
-        console.log("Recording started");
+        console.log("Recording started with mic:", selectedMic);
       }
 
       function stopRecording() {
@@ -110,9 +137,10 @@
         console.log("Recording stopped");
       }
 
-      // Initialize the form when the page loads
+      // Initialize the form and mic selector when the page loads
       window.addEventListener("load", function () {
         fetchQuestionnaire();
+        populateMicSelector();
       });
     </script>
   </body>
