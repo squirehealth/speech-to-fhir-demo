@@ -91,7 +91,7 @@
 
         if (summary.data && summary.generation_result === "success") {
           var formContainer = document.getElementById("form-container");
-          LForms.Util.mergeFHIRDataIntoLForms(fhirQuestionnaire, summary.data);
+          LForms.Util.addFormToPage(fhirQuestionnaire, formContainer, { questionnaireResponse: summary.data });
         } else {
           console.error("Error in summary data:", summary);
         }
