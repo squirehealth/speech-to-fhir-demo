@@ -68,6 +68,33 @@ p {
   border-radius: var(--radius);
   border: 1px solid hsl(var(--border));
   align-items: center;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.controls.recording {
+  box-shadow: 0 0 0 3px hsl(0 72.2% 50.6% / 0.3);
+  border-color: hsl(0 72.2% 50.6%);
+  position: relative;
+}
+.controls.recording::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(0 72.2% 50.6%);
+  box-shadow: 0 0 8px 2px hsl(0 72.2% 50.6% / 0.5);
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
 }
 
 .mic-selector {

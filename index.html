@@ -35,7 +35,7 @@
           recognition.
         </p>
 
-        <div class="controls">
+        <div class="controls" id="controls">
           <select id="micSelector" class="mic-selector" style="margin-right: 1em; min-width: 160px;"></select>
           <button
             id="startRecording"
@@ -48,6 +48,7 @@
             id="stopRecording"
             onclick="stopRecording()"
             class="btn-secondary"
+            disabled
           >
             Stop Recording
           </button>
@@ -129,11 +130,17 @@
           inputLanguage: "en",
           audioInput: selectedMic
         });
+        document.getElementById("startRecording").disabled = true;
+        document.getElementById("stopRecording").disabled = false;
+        document.getElementById("controls").classList.add("recording");
         console.log("Recording started with mic:", selectedMic);
       }
 
       function stopRecording() {
         squire.stopRecording();
+        document.getElementById("startRecording").disabled = false;
+        document.getElementById("stopRecording").disabled = true;
+        document.getElementById("controls").classList.remove("recording");
         console.log("Recording stopped");
       }
 
@@ -141,6 +148,9 @@
       window.addEventListener("load", function () {
         fetchQuestionnaire();
         populateMicSelector();
+        document.getElementById("startRecording").disabled = false;
+        document.getElementById("stopRecording").disabled = true;
+        document.getElementById("controls").classList.remove("recording");
       });
     </script>
   </body>
