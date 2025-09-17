@@ -84,23 +84,13 @@ The Squire SDK is developped to be integratable into any system. Via FHIR Questi
 
 If you want to test the recording feature without speaking every time, you can use a virtual audio input to play a test audio file as your microphone input. This is useful for demoing or automating tests.
 
-### macOS: Blackhole + GarageBand
+### macOS: Blackhole
 
-1. **Install [Blackhole](https://existential.audio/blackhole/)** (free virtual audio driver).
-2. **Install GarageBand** from the Mac App Store (or use any DAW that can route audio output to Blackhole).
-3. Set up Blackhole as an aggregate device in Audio MIDI Setup, and select it as your system input.
-4. Open GarageBand, import the test audio file (`assets/test_audio.wav`), and set the output device to Blackhole.
-5. Start playback in GarageBand. Your browser/app will receive the audio as if it was coming from your microphone.
+For macOS, use [Blackhole](https://existential.audio/blackhole/) as a virtual audio driver. Play the test audio file (`assets/test_audio.wav`) through GarageBand or any DAW (Digital Audio Workstation) or audio player that can route output to Blackhole, and set Blackhole as your system input. This will let you simulate microphone input for testing.
 
-### Windows: VoiceMeeter + Audacity (or alternative DAW)
+### Windows: VoiceMeeter
 
-1. **Install [VoiceMeeter](https://vb-audio.com/Voicemeeter/)** (virtual audio mixer).
-2. **Install [Audacity](https://www.audacityteam.org/)** (free audio editor) or use any DAW that can route audio output to VoiceMeeter.
-3. Set VoiceMeeter Input as your default recording device in Windows Sound settings.
-4. Open Audacity, import the test audio file (`assets/test_audio.wav`), and set the output device to VoiceMeeter.
-5. Play the audio in Audacity. Your browser/app will receive the audio as microphone input.
-
-> **Note:** You can use any DAW or audio player that allows you to select the output device. Alternatives to GarageBand on Windows include FL Studio, Reaper, or even the built-in Windows Media Player (with proper routing).
+On Windows, use [VoiceMeeter](https://vb-audio.com/Voicemeeter/) to create a virtual audio input. Play the test audio file (`assets/test_audio.wav`) through any DAW or audio player that can route output to VoiceMeeter, and set VoiceMeeter as your system microphone. This will let you test the recording feature without speaking.
 
 ### Test Audio File
 
