@@ -79,6 +79,24 @@ For the abmitious developers: a demo is cool, but can you integrate it in your o
 
 The Squire SDK is developped to be integratable into any system. Via FHIR Questionnaires you can define the forms unique to your software.
 
+
+## Testing with Virtual Audio Input
+
+If you want to test the recording feature without speaking every time, you can use a virtual audio input to play a test audio file as your microphone input. This is useful for demoing or automating tests.
+
+### macOS: Blackhole
+
+For macOS, use [Blackhole](https://existential.audio/blackhole/) as a virtual audio driver. Play the test audio file (`assets/test_audio.wav`) through GarageBand or any DAW (Digital Audio Workstation) or audio player that can route output to Blackhole, and set Blackhole as your system input. This will let you simulate microphone input for testing.
+
+### Windows: VoiceMeeter
+
+On Windows, use [VoiceMeeter](https://vb-audio.com/Voicemeeter/) to create a virtual audio input. Play the test audio file (`assets/test_audio.wav`) through any DAW or audio player that can route output to VoiceMeeter, and set VoiceMeeter as your system microphone. This will let you test the recording feature without speaking.
+
+### Test Audio File
+
+The repository includes a sample audio file at `assets/test_audio.wav` for testing purposes.
+
+---
 ## Useful Links
 
 - [Squire SDK Documentation](https://developers.squire.eu/): Guide on how to use the Squire SDK
